@@ -7,6 +7,17 @@ var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
  
 
+var ingredient = $("#ingr-input").val().trim();
+var appId = "fedaa58c"
+var appKey = "cc278fb637c51da2bed120d07522a08f"
+var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=fedaa58c" + appId + "&app_key=cc278fb637c51da2bed120d07522a08f" + appKey + "&from=0&to=12";
+$.ajax({
+ url: queryURL,
+ method: 'GET'
+}).then(function(response) {
+ console.log(response)
+});
+
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveExample: function(example) {
