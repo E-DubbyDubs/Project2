@@ -1,8 +1,11 @@
+ 
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
+var $exampleIngredient = $("#example-ingredient");
+var $exampleRecipe = $("#example-recipe");
+var $exampleAuthor = $("#example-author");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+ 
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -35,7 +38,7 @@ var refreshExamples = function() {
   API.getExamples().then(function(data) {
     var $examples = data.map(function(example) {
       var $a = $("<a>")
-        .text(example.text)
+        .text(example.ingredient)
         .attr("href", "/example/" + example.id);
 
       var $li = $("<li>")
@@ -65,12 +68,13 @@ var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+    ingredient: $exampleIngredient.val().trim(),
+    recipe: $exampleRecipe.val().trim(),
+    author: $exampleAuthor.val().trim()
   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
+  if (!(example.ingredient && example.recipe)) {
+    alert("You must enter an ingredient and link it to a recipe");
     return;
   }
 
@@ -78,8 +82,10 @@ var handleFormSubmit = function(event) {
     refreshExamples();
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  $exampleIngredient.val("");
+  $exampleRecipe.val("");
+  $exampleAuthor.val("");
+ 
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked

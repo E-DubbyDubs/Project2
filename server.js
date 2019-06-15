@@ -11,6 +11,8 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+//app.use(express.static('public/img')); //added as a test
+//app.use(express.static(__dirname+'/public'));//added as a test
 
 // Handlebars
 app.engine(

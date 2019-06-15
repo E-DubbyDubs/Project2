@@ -1,25 +1,58 @@
+
+
+     <!-- Jumbotron -->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <nav style='height:80px'>
+                    <a id="logout" style='display:none' class="nav-item nav-link">Log Out</a>
+                    <a id="login" style='display:none' class="nav-item nav-link" href="login-register.html">Login/Register</a>
+                    
+                </nav>
+            <img src="images/Recepie.png" width=960px height="400px" alt="Logo">
+            <p class="lead">Yummy recipes makes it easy to find great recipes.
+                Search by name or ingredients. Join to save your favorites for later.!</p>
+            <nav style='height:80px'>
+                <a id="logout" style='display:none' class="nav-item nav-link">Log Out</a>
+                <a id="login" style='display:none' class="nav-item nav-link" href="login-register.html">Login/Register</a>
+                
+            </nav>
+        
+        </div>
+    </div>
+ 
 <div id="home">
-  <div class="container">
+   <div class="container"> 
+      <div class="row">
+        <div class="col">
     <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
+      <div class="col-4 offset-2">        
+       
+        <h3>Enter an Ingredient and a Recipe</h3>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+            <label for="example-ingredient"> Ingredient </label>
+            <input type="text" id="example-ingredient" class="form-control" aria-describedby="example-ingredient" placeholder="Enter Example ingredient">
           </div>
           <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+            <label for="example-recipe"> Recipe</label>
+            <textarea class="form-control" id="example-recipe" aria-describedby="example-recipe" placeholder="Enter Example recipe"></textarea>
           </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
+           <div class="form-group">
+            <label for="example-author">Recipe author</label>
+            <textarea class="form-control" id="example-author" aria-describedby="example-author" placeholder="Enter recipe author"></textarea>
+          </div>
+          <span class="input-group-btn">
+             <button id="submit" class="btn btn-primary float-right" style="background-color:rgb(233, 210, 165);" type="button" title="Click here to submit">Submit</button>
+          </span>
+          
         </form>
-        <h3>Examples:</h3>
+ </div>
+      <div class="col">
+        <h3>Ingredients to add your shopping List:</h3>
         <ul id="example-list" class="list-group">
           {{#each examples}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
+            <a href="example/{{this.id}}">{{this.ingredient}}</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
@@ -27,7 +60,219 @@
       </div>
     </div>
   </div>
+ </div>
+ </div>
 </div>
+  
+ 
 
+
+     <!-- Add a recipe 
+    <div class="container">
+            <div class="row">
+           
+              <div class="col-sm">
+                <h5>Add a recipe</h5>
+                 <div class="input-group">
+            <input type="text" id='songsearch' class="form-control" title="add a recipe name." placeholder="add a recipe">
+            <span class="input-group-btn">
+                <button id="searchButton" class="btn" style="background-color:rgb(233, 210, 165);" type="button" title="Click here to search">Submit</button>
+            </span>
+        </div>
+              </div>
+              <div class="col-sm">
+                
+              </div>
+              <div class="col-sm">
+               
+              </div>
+            </div>
+          </div>-->
+
+  
+<div class="container">
+     <div class="row">
+        <div class="col">
+  
+        <!-- Search for recipes -->
+        <h3>Search for recipes</h3>
+            <div class="input-group">
+                <input type="text" id='songsearch' class="form-control" title="Enter a recipe to search." placeholder="Search for recipes">
+                <span class="input-group-btn">
+                    <button id="searchButton" class="btn" style="background-color:rgb(233, 210, 165);" type="button" title="Click here to search">Search</button>
+                </span>
+            </div>
+    </div>
+        <div class="col">
+                <h3>Search for Ingredients</h3>
+                <div class="input-group">
+                    <input type="text" id='songsearch' class="form-control" title="Enter the song name, and/or artist." placeholder="Search for ingredients">
+                    <span class="input-group-btn">
+                        <button id="searchButton" class="btn" style="background-color:rgb(233, 210, 165);" type="button" title="Click here to search">Search</button>
+                    </span>
+                </div>
+            
+        </div>
+     
+    </div>
+     
+    <div class="container">
+         <div class="row">
+            <div class="col">
+         <!-- recipes Results-->
+              <div id='results' >
+                
+              </div>
+         <!-- ingredients Results-->    
+            </div>
+            <div class="col">
+              <div id='results' >
+              </div>
+               
+            </div>
+    </div>  
+
+ 
+
+        <!-- recipes details -->
+        <div id="cardStyle" class="card">
+            <h5 id='songTitle' class="card-header">Recipe Name</h5>
+            <div class="card-body">
+                <h5 class="card-title"><span id='artist'>Step by Step</span>
+                    <button id='mainsong' type="button" class="normBtn play">
+                        <span class="glyphicon glyphicon-play-circle" title="Click here to view the full details"></span>
+                    </button>
+                    <button id='mainheart' type="button" class="normBtn heart" title="Click here to add this to your favorites">
+                        <span class="glyphicon glyphicon-heart"></span>
+                    </button>
+                </h5>
+                <div class="card">
+                    <div class="card-body">
+                        <div id='lyrics' data-spy="scroll" data-target="#list-example" data-offset="0">
+                            Recipe details!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+ 
+
+
+        <!-- Top 5 recipe of the week -->
+        <table class="table table-striped-border">
+
+            <thead>
+                <tr>
+                    <div class="topFive" class="col-md-12">Top 5 recipes of the week</div>
+                </tr>
+            </thead>
+
+            <tbody id='top5'>
+                <tr>
+                    <th scope="col" class="align-middle">1</th>
+                    <th scope="col">
+                        <button type="button" id='songBtn1' class="play normBtn">
+                            <span class="glyphicon glyphicon-play-circle" title="Click here to view the full details"></span>
+                        </button>
+                    </th>
+                    <th scope="col" id='song1' class="align-middle">Recipe Name</th>
+                    <th scope="col" id='artist1' class="align-middle">Author</th>
+                    <th scope="col">
+                        <button type="button" id='heartBtn1' class="heart normBtn" title="Click here to add this to your favorites"> 
+                            <span class="glyphicon glyphicon-heart"></span>
+                        </button>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th scope="col" class="align-middle">2</th>
+                    <th scope="col">
+                        <button type="button" id='songBtn2' class="play normBtn">
+                            <span class="glyphicon glyphicon-play-circle" title="Click here to view the full details"></span>
+                        </button>
+                    </th>
+                    <th scope="col" id='song2' class="align-middle">Recipe Name</th>
+                    <th scope="col" id='artist2' class="align-middle">Author</th>
+                    <th scope="col">
+                        <button type="button" id='heartBtn2' class="heart normBtn" title="Click here to add this to your favorites">
+                            <span class="glyphicon glyphicon-heart"></span>
+                        </button>
+                    </th>
+                </tr>
+                <tr>
+                    <th scope="col" class="align-middle">3</th>
+                    <th scope="col">
+                        <button type="button" id='songBtn3' class="play normBtn">
+                            <span class="glyphicon glyphicon-play-circle" title="Click here to view the full details"></span>
+                        </button>
+                    </th>
+                    <th scope="col" id='song3' class="align-middle">Recipe Name</th>
+                    <th scope="col" id='artist3' class="align-middle">Author</th>
+                    <th scope="col">
+                        <button type="button" id='heartBtn3' class="heart normBtn" title="Click here to add this to your favorites">
+                            <span class="glyphicon glyphicon-heart"></span>
+                        </button>
+                    </th>
+                </tr>
+                <tr>
+                    <th scope="col" class="align-middle">4</th>
+                    <th scope="col">
+                        <button type="button" id='songBtn4' class="play normBtn">
+                            <span class="glyphicon glyphicon-play-circle" title="Click here to view the full details"></span>
+                        </button>
+                    </th>
+                    <th scope="col" id='song4' class="align-middle">Recipe Name</th>
+                    <th scope="col" id='artist4' class="align-middle">Author</th>
+                    <th scope="col">
+                        <button type="button" id='heartBtn4' class="heart normBtn" title="Click here to add this to your favorites">
+                            <span class="glyphicon glyphicon-heart"></span>
+                        </button>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th scope="col" class="align-middle">5</th>
+                    <th scope="col">
+                        <button type="button" id='songBtn5' class="play normBtn">
+                            <span class="glyphicon glyphicon-play-circle" title="Click here to view the full details"></span>
+                        </button>
+                    </th>
+                    <th scope="col" id='song5' class="align-middle">Recipe Name</th>
+                    <th scope="col" id='artist5' class="align-middle">Author</th>
+                    <th scope="col">
+                        <button type="button" id='heartBtn5' class="heart normBtn" title="Click here to add this to your favorites">
+                            <span class="glyphicon glyphicon-heart"></span>
+                        </button>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Favorite recipe -->
+        <table class="table table-striped-border">
+
+            <thead>
+                <tr>
+                    <div class="topFive" class="col-md-12"><span id="heartStyle"
+                            class="glyphicon glyphicon-heart"></span>My Favorites Recipes </div>
+                </tr>
+            </thead>
+
+            <tbody id='favorites'>  
+            </tbody>
+        </table>
+    </div>
+
+
+
+ 
+<script src="javascript/jquery-ui.js"></script>
+<script src="javascript/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+<link rel="stylesheet" type="text/css" href="css/musicStyle.css">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
