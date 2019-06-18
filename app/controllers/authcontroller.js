@@ -1,5 +1,5 @@
 var exports = module.exports = {}
-
+var path       = require("path");
 
 exports.signup = function(req,res){
 
@@ -15,8 +15,9 @@ exports.signin = function(req,res){
 
 exports.dashboard = function(req,res){
 
-	res.render('dashboard'); 
-
+  // res.render('dashboard');
+  console.log(__dirname);
+  res.sendFile(path.join(__dirname,"..","/public/dashboard.html"));
 }
 
 exports.logout = function(req,res){
