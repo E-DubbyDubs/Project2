@@ -40,7 +40,7 @@
     cursor:pointer;
 }
 
-/*--------------Top 5 on the Billboard Table-------------*/
+/*--------------Top 5 -------------*/
 .topFive{
     width: 100%;
     background-color: rgb(236, 181, 108);
@@ -100,7 +100,7 @@ button:focus{
 }
 
 
-/*--------------Search for Songs-------------*/
+/*--------------Search-------------*/
 
 h3{
     width: 100%;
@@ -133,7 +133,7 @@ h3{
 
 .btn:focus {outline:none; border:none;box-shadow:none;}
 .btn:active {outline:none; border:none;box-shadow:none;}
-/*--------------Song Returned-------------*/
+/*--------------Info Returned-------------*/
 
 .card-header{
     width: 100%;
