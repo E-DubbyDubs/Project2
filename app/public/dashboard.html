@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <script src="https://code.jquery.com/jquery.js"></script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -15,7 +17,7 @@
 <body>
     <nav class="navbar navbar-light bg-light">
         <form class="form-inline">
-            <button class="btn btn-sm btn-outline-secondary" type="button">Log Out</button>
+                <a href="/logout" class="btn btn-sm btn-outline-secondary">Log Out</a>
         </form>
     </nav>
 
@@ -332,11 +334,37 @@
                 </tbody>
             </table>
         </div>
+
+
+
+        <script type="text/javascript">
+
+            // $logout - btn.on("click", logOutUser);
+
+            // $(document).on("click", "logout-btn", logOutUser);
+            // document.getElementById("logout-btn").addEventListener("click", logOutUser);
+
+            $("#logout-btn").on("click", function (event) {
+                console.log("i've been clicked");
+                $.ajax({ url: "/logout", method: "GET" });
+            });
+
+
+    // function logOutUser() {
+    //     // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+    //     $.ajax({ url: "/logout", method: "GET" });
+    //     console.log("i've been clicked");
+    //     console.log("i've been clicked");
+    //     console.log("i've been clicked");
+    //     console.log("i've been clicked");
+    // }
+
+        </script>
 </body>
 
 </html>
 
-<script src="javascript/jquery-ui.js"></script>
+<!-- <script src="javascript/jquery-ui.js"></script>
 <script src="javascript/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -344,4 +372,4 @@
 <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
 <link rel="stylesheet" type="text/css" href="css/recipe.css">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<script src="/js/index.js"></script> -->
