@@ -32,6 +32,8 @@ $('#searchButton').on('click', function () {
 		var results = response.hits;
 
     $('#results1').html('');
+    $('#ingredient1').html('');
+   // $('#recipeName').html('');
     
 
 		for (i = 0; i < results.length; i++) {
@@ -44,16 +46,19 @@ $('#searchButton').on('click', function () {
       var recipeImage = $('<img>');
       var recipeImage = $('<img>').width(80);
 			var recipeCaption = $('<div>');
-			var recipeBtnDiv = $('<div>');
+      var recipeBtnDiv = $('<div>');
+      var activityBtn = $('<div>').width(250);
+      activityBtn.addClass('text-center');
 			var caloriesP = $('<p>');
 			recipeCaption.addClass('caption');
 			recipeCaption.append($('<div>').text(results[i].recipe.label).addClass('recipeName'));
 			recipeCaption.addClass('text-center');
 			caloriesP.text(calories + ' calories per serving');
-			recipeCaption.append(caloriesP)
-			recipeBtnDiv.append($('<a>').append($('<button>').addClass('btn recipeBtn').text('Go to recipe')).attr('href',results[i].recipe.url).attr('target','_blank'));
-      var activityBtn = $('<button>').addClass('glyphicon glyphicon-heart');
-      var activityBtn = $('<button>').text('Ingredients List').addClass('ingr');
+			recipeCaption.append(caloriesP);
+      recipeBtnDiv.append($('<a>').append($('<button>').addClass('btn recipeBtn').text('Go to recipe')).attr('href',results[i].recipe.url).attr('target','_blank'));
+      activityBtn.append($('<a>').append($('<button>').addClass('btn').text('Ingredients')).text(results[i].recipe.label).addClass('recipeName')).attr('href',results[i].recipe.shareAs).attr('target','_blank');
+      activityBtn.append($('<a>').append($('<button>').addClass('btn').text('Ingredients')).attr('href',results[i].recipe.shareAs).attr('target','_blank'));
+      
 			recipeBtnDiv.append(activityBtn);
 			recipeCaption.append(recipeBtnDiv);
 			recipeImage.attr('src', results[i].recipe.image);
@@ -62,8 +67,11 @@ $('#searchButton').on('click', function () {
       recipeDiv.append(recipeCaption);
       recipeDiv.append(recipeCaption);
        
-			$('#results1').prepend(recipeDiv)
-      console.log(ingredient);
+      $('#results1').prepend(recipeDiv)
+      $('#ingredient1').prepend(activityBtn)
+      
+      
+      //console.log(ingredient);
       
 
      
