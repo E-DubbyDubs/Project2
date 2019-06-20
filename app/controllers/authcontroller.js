@@ -1,5 +1,8 @@
 var exports = module.exports = {}
 var path       = require("path");
+var express    = require('express');
+var app        = express();
+app.use(express.static('public'));
 
 exports.signup = function(req,res){
 
@@ -18,6 +21,7 @@ exports.dashboard = function(req,res){
   // res.render('dashboard');
   console.log(__dirname);
   res.sendFile(path.join(__dirname,"..","/public/views/dashboard.html"));
+  // res.sendFile(path.join(__dirname,"..","/public/css/style.css"));
 }
 
 exports.logout = function(req,res){

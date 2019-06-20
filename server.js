@@ -1,16 +1,19 @@
-    var express    = require('express')
-    var app        = express()
-    var passport   = require('passport')
-    var session    = require('express-session')
-    var bodyParser = require('body-parser')
-    var env        = require('dotenv').load()
-    var exphbs     = require('express-handlebars')
+    var express    = require('express');
+    var app        = express();
+    var passport   = require('passport');
+    var session    = require('express-session');
+    var bodyParser = require('body-parser');
+    var env        = require('dotenv').load();
+    var exphbs     = require('express-handlebars');
     var path       = require("path");
 
     //For BodyParser
     app.use(bodyParser.urlencoded({ extended: true }));
+
     app.use(bodyParser.json());
-    app.use(express.static(__dirname + './app/public'));
+
+    // Use the express.static middleware to serve static content for the app from the "public" directory in the application directory.
+    app.use(express.static(__dirname + '/app/public'));
     
      // For Passport
     app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
