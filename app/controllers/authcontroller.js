@@ -17,7 +17,7 @@ exports.dashboard = function(req,res){
 
   // res.render('dashboard');
   console.log(__dirname);
-  res.sendFile(path.join(__dirname,"..","/public/dashboard.html"));
+  res.sendFile(path.join(__dirname,"..","/public/views/dashboard.html"));
 }
 
 exports.logout = function(req,res){
