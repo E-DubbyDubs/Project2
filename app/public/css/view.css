@@ -1,0 +1,35 @@
+.jumbotron {
+    background-color: rgb(236, 181, 108);
+    color: white;
+    text-align: center;
+    /* font-size: 30px; */
+}
+
+#main-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 80px;
+}
+
+.container {
+    margin: 10%;
+    
+}
+
+.wrapper {
+    padding: 20px;
+    background-color: rgb(255,255,255,0.7);
+}
+
+.text {
+    font-family: 'Anton', sans-serif;
+}
+
+.btn {
+    background-color: rgb(233, 210, 165);
+    border: none;
+}
+
+.btn:hover {
+    background-color: rgb(236, 181, 108);
+    border: none;
+}
