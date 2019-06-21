@@ -1,90 +1,124 @@
-
-
-
-// Start The App
-//Search for Recipes using Edemam API
+ 
+// Get references to page elements
+var $exampleIngredient = $("#example-ingredient");
+var $exampleRecipe = $("#example-recipe");
+var $exampleAuthor = $("#example-author");
+var $submitBtn = $("#submit");
+var $exampleList = $("#example-list");
  
 
-var search;
 
-$('#searchButton').on('click', function () {
-  $('#results1').empty();
-  $('#results1').text('Searching...');
-  search = $('#seach_recipe').val().trim();
-
-
-  if (search == '') {
-    $('#results1').text('Please enter a recipe name.');
-
+// The API object contains methods for each kind of request we'll make
+var API = {
+  saveExample: function(example) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/examples",
+      data: JSON.stringify(example)
+    });
+  },
+  getExamples: function() {
+    return $.ajax({
+      url: "api/examples",
+      type: "GET"
+    });
+  },
+  deleteExample: function(id) {
+    return $.ajax({
+      url: "api/examples/" + id,
+      type: "DELETE"
+    });
   }
+};
+
+var searchIngredient = function() {
+
   
-//  var appId = "ebaa6049"
-  //var appKey = "e4ab93601fb908ac4f17e5380ac68f64	"
+  
+var ingredient = $("#ingr-input");
  
-
-  function displayRecipes() {
-    $.ajax({ url: 'https://api.edamam.com/search?q=' + search + '&app_id=ebaa6049&app_key=e4ab93601fb908ac4f17e5380ac68f64'+'&from=0&to=6'
-    }).then(function(response) {
-      console.log(response)
-       
-    var intCalories = (response.hits[0].recipe.calories)/(response.hits[0].recipe.yield);
-		var calories = (Math.floor(intCalories));
-		var results = response.hits;
-
-    $('#results1').html('');
-    
-
-		for (i = 0; i < results.length; i++) {
-      var intCalories = (results[i].recipe.calories)/(results[i].recipe.yield)
-      
-      var calories = (Math.floor(intCalories));
-      var ingredient = (results[i].recipe.ingredientLines);;
-      var recipeDiv = $('<div>').width(150);
-     
-      var recipeImage = $('<img>');
-      var recipeImage = $('<img>').width(80);
-			var recipeCaption = $('<div>');
-			var recipeBtnDiv = $('<div>');
-			var caloriesP = $('<p>');
-			recipeCaption.addClass('caption');
-			recipeCaption.append($('<div>').text(results[i].recipe.label).addClass('recipeName'));
-			recipeCaption.addClass('text-center');
-			caloriesP.text(calories + ' calories per serving');
-			recipeCaption.append(caloriesP)
-			recipeBtnDiv.append($('<a>').append($('<button>').addClass('btn recipeBtn').text('Go to recipe')).attr('href',results[i].recipe.url).attr('target','_blank'));
-      var activityBtn = $('<button>').addClass('glyphicon glyphicon-heart');
-      var activityBtn = $('<button>').text('Ingredients List').addClass('ingr');
-			recipeBtnDiv.append(activityBtn);
-			recipeCaption.append(recipeBtnDiv);
-			recipeImage.attr('src', results[i].recipe.image);
-			recipeDiv.addClass('thumbnail col-md-4 recipe');
-      recipeDiv.append(recipeImage);
-      recipeDiv.append(recipeCaption);
-      recipeDiv.append(recipeCaption);
-       
-			$('#results1').prepend(recipeDiv)
-      console.log(ingredient);
-      
-
-     
-    }
-  
-  })
+var appId = "fedaa58c"
+var appKey = "cc278fb637c51da2bed120d07522a08f"
+var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=fedaa58c" + appId + "&app_key=cc278fb637c51da2bed120d07522a08f" + appKey + "&from=0&to=12";
+$.ajax({
+ url: queryURL,
+ method: 'GET'
+}).then(function(response) {
+ console.log(response)
+});
 }
-  displayRecipes();
+
+// refreshExamples gets new examples from the db and repopulates the list
+var refreshExamples = function() {
+  API.getExamples().then(function(data) {
+    var $examples = data.map(function(example) {
+      var $a = $("<a>")
+        .text(example.ingredient)
+        .attr("href", "/example/" + example.id);
+
+      var $li = $("<li>")
+        .attr({
+          class: "list-group-item",
+          "data-id": example.id
+        })
+        .append($a);
+
+      var $button = $("<button>")
+        .addClass("btn btn-danger float-right delete")
+        .text("ｘ");
+
+      $li.append($button);
+
+      return $li;
+    });
+
+    $exampleList.empty();
+    $exampleList.append($examples);
+  });
+};
+
+// handleFormSubmit is called whenever we submit a new example
+// Save the new example to the db and refresh the list
+var handleFormSubmit = function(event) {
+  event.preventDefault();
+
+  var example = {
+    ingredient: $exampleIngredient.val().trim(),
+    recipe: $exampleRecipe.val().trim(),
+    author: $exampleAuthor.val().trim()
+  };
+
+  if (!(example.ingredient && example.recipe)) {
+    alert("You must enter an ingredient and link it to a recipe");
+    return;
+  }
+
+  API.saveExample(example).then(function() {
+    refreshExamples();
+  });
+
+  $exampleIngredient.val("");
+  $exampleRecipe.val("");
+  $exampleAuthor.val("");
  
- 
-})
- 
-//display ingredient list
+};
 
+// handleDeleteBtnClick is called when an example's delete button is clicked
+// Remove the example from the db and refresh the list
+var handleDeleteBtnClick = function() {
+  var idToDelete = $(this)
+    .parent()
+    .attr("data-id");
 
-/* $('#recipe1').html('');
-      var ingredient = (results[i].recipe.ingredientLines);
-            
-      var ingredientBtnDiv = $('<div>');
-      var ingredientBtnDiv = $('<div>');
-      ingredientBtnDiv.append(ingredient);
- */
+  API.deleteExample(idToDelete).then(function() {
+    refreshExamples();
+  });
+};
 
-
+// Add event listeners to the submit and delete buttons
+$submitBtn.on("click", handleFormSubmit);
+$exampleList.on("click", ".delete", handleDeleteBtnClick);
+searchIngredient(this.ingredient);
