@@ -1,12 +1,10 @@
- 
 // Get references to page elements
-var $exampleIngredient = $("#example-ingredient");
 var $exampleRecipe = $("#example-recipe");
+var $exampleIngredient = $("#example-ingredient");
+var $exampleDescription = $("#example-description");
 var $exampleAuthor = $("#example-author");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
- 
-
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -34,31 +32,26 @@ var API = {
   }
 };
 
-var searchIngredient = function() {
-
-  
-  
-var ingredient = $("#ingr-input");
- 
-var appId = "fedaa58c"
-var appKey = "cc278fb637c51da2bed120d07522a08f"
-var queryURL = "https://api.edamam.com/search?q=" + ingredient + "&app_id=fedaa58c" + appId + "&app_key=cc278fb637c51da2bed120d07522a08f" + appKey + "&from=0&to=12";
-$.ajax({
- url: queryURL,
- method: 'GET'
-}).then(function(response) {
- console.log(response)
-});
-}
-
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
   API.getExamples().then(function(data) {
     var $examples = data.map(function(example) {
       var $a = $("<a>")
-        .text(example.ingredient)
+        .text(example.recipeName)
+        .text(example.author)
         .attr("href", "/example/" + example.id);
-
+      //add author
+      /*  var $a = $("<div>")
+        .text(example.$exampleAuthor)
+        .attr("href", "/example/" + example.id); */
+      // add ingredient to the DOM
+      /*  var $a = $("<a>")
+         .text(example.ingredientList)
+         .attr("href", "/example/" + example.ingredientList);
+      //add the recipe steps
+         var $a = $("<a>")
+         .text(example.description)
+         .attr("href", "/example/" + example.description);  */
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
@@ -66,6 +59,7 @@ var refreshExamples = function() {
         })
         .append($a);
 
+      //delete ingredient
       var $button = $("<button>")
         .addClass("btn btn-danger float-right delete")
         .text("ｘ");
@@ -86,13 +80,14 @@ var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var example = {
-    ingredient: $exampleIngredient.val().trim(),
-    recipe: $exampleRecipe.val().trim(),
+    recipeName: $exampleRecipe.val().trim(),
+    ingredientList: $exampleIngredient.val().trim(),
+    description: $exampleDescription.val().trim(),
     author: $exampleAuthor.val().trim()
   };
 
-  if (!(example.ingredient && example.recipe)) {
-    alert("You must enter an ingredient and link it to a recipe");
+  if (!(example.recipeName && example.author)) {
+    alert("You must enter a Recipe and Author!");
     return;
   }
 
@@ -100,10 +95,10 @@ var handleFormSubmit = function(event) {
     refreshExamples();
   });
 
-  $exampleIngredient.val("");
   $exampleRecipe.val("");
+  $exampleIngredient.val("");
+  $exampleDescription.val("");
   $exampleAuthor.val("");
- 
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
@@ -121,4 +116,115 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
-searchIngredient(this.ingredient);
+
+//Search for Recipes using Edemam API
+
+var search;
+
+$("#searchButton").on("click", function() {
+  $("#results1").empty();
+  $("#results1").text("Searching...");
+  search = $("#seach_recipe")
+    .val()
+    .trim();
+
+  if (search == "") {
+    $("#results1").text("Please enter a recipe name.");
+  }
+
+  //  var appId = "ebaa6049"
+  //var appKey = "e4ab93601fb908ac4f17e5380ac68f64	"
+
+  function displayRecipes() {
+    $.ajax({
+      url:
+        "https://api.edamam.com/search?q=" +
+        search +
+        "&app_id=ebaa6049&app_key=e4ab93601fb908ac4f17e5380ac68f64" +
+        "&from=0&to=6"
+    }).then(function(response) {
+      console.log(response);
+
+      var intCalories =
+        response.hits[0].recipe.calories / response.hits[0].recipe.yield;
+      var calories = Math.floor(intCalories);
+      var results = response.hits;
+
+      $("#results1").html("");
+      $("#ingredient1").html("");
+      // $('#recipeName').html('');
+
+      for (i = 0; i < results.length; i++) {
+        var intCalories = results[i].recipe.calories / results[i].recipe.yield;
+
+        var calories = Math.floor(intCalories);
+        var ingredient = results[i].recipe.ingredientLines;
+        var recipeDiv = $("<div>").width(150);
+
+        var recipeImage = $("<img>");
+        var recipeImage = $("<img>").width(80);
+        var recipeCaption = $("<div>");
+        var recipeBtnDiv = $("<div>");
+        var activityBtn = $("<div>").width(250);
+        activityBtn.addClass("text-center");
+        var caloriesP = $("<p>");
+        recipeCaption.addClass("caption");
+        recipeCaption.append(
+          $("<div>")
+            .text(results[i].recipe.label)
+            .addClass("recipeName")
+        );
+        recipeCaption.addClass("text-center");
+        caloriesP.text(calories + " calories per serving");
+        recipeCaption.append(caloriesP);
+        recipeBtnDiv.append(
+          $("<a>")
+            .append(
+              $("<button>")
+                .addClass("btn recipeBtn")
+                .text("Go to recipe")
+            )
+            .attr("href", results[i].recipe.url)
+            .attr("target", "_blank")
+        );
+        activityBtn
+          .append(
+            $("<a>")
+              .append(
+                $("<button>")
+                  .addClass("btn")
+                  .text("Ingredients")
+              )
+              .text(results[i].recipe.label)
+              .addClass("recipeName")
+          )
+          .attr("href", results[i].recipe.shareAs)
+          .attr("target", "_blank");
+        activityBtn.append(
+          $("<a>")
+            .append(
+              $("<button>")
+                .addClass("btn")
+                .text("Ingredients")
+            )
+            .attr("href", results[i].recipe.shareAs)
+            .attr("target", "_blank")
+        );
+
+        recipeBtnDiv.append(activityBtn);
+        recipeCaption.append(recipeBtnDiv);
+        recipeImage.attr("src", results[i].recipe.image);
+        recipeDiv.addClass("thumbnail col-md-6 recipe");
+        recipeDiv.append(recipeImage);
+        recipeDiv.append(recipeCaption);
+        recipeDiv.append(recipeCaption);
+
+        $("#results1").append(recipeDiv);
+        $("#ingredient1").prepend(activityBtn);
+
+        //console.log(ingredient);
+      }
+    });
+  }
+  displayRecipes();
+});

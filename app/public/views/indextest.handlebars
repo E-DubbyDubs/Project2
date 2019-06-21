@@ -1,0 +1,68 @@
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+      {{!--   <form class="form-inline">
+                <a href="/logout" class="btn btn-sm btn-outline-secondary">Log Out</a>
+        </form> --}}
+    </nav>
+
+        <div  class="jumbotron jumbotron-fluid">
+                <div  class="container">
+                        <nav style='height:50px'>
+                            <a href="/logout" class="btn btn-sm btn-outline-secondary">Log Out</a>
+                                 
+                        </nav>
+                    <img src="https://cdn.vox-cdn.com/uploads/chorus_image/image/51532085/Pie_splet_on_pie.0.0.jpg" width=950px height="350px" alt="Logo">
+                     <p class="lead">Yummy recipes makes it easy to find great recipes.
+                            Search by name or ingredients. Join to save your favorites for later.!
+                     </p>
+
+                         
+                    </div>
+            </div>
+<div id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h1>{{images}}</h1>
+     {{!--    <h2>This is our Home Page!</h2 --}} 
+        {{!-- <img src="https://cdn.vox-cdn.com/uploads/chorus_image/image/51532085/Pie_splet_on_pie.0.0.jpg" width=950px height="350px" alt="Logo"> --}}
+        <form class="clearfix mb-4" action="POST">
+       <h3>Make Your Own Recipe</h3>
+          <div class="form-group">
+            <label for="example-text">Recipe Name</label>
+            <input type="text" id="example-recipe" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+          </div>
+          <div class="form-group">
+            <label for="example-text">Ingredient List</label>
+            <input type="text" id="example-ingredient" class="form-control" aria-describedby="example-text" placeholder="Enter the ingredient list for your recipe">
+          <div class="form-group">
+            <label for="example-description">Instructions</label>
+            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter the instructions"></textarea>
+          </div>
+          <button id="submit" class="btn btn-primary float-right">Submit</button>
+        </form>
+        <h3>My Recipe List:</h3>
+        <ul id="example-list" class="list-group"> 
+               <p> Recipe Name </p> 
+           {{#each examples}}           
+          <li data-id="{{this.id}}" class="list-group-item">             
+              <a href="example/{{this.id}}"> {{this.recipeName}}</a>
+           
+               
+              <a href="example/{{this.id}}">{{this.author}}</a>
+             
+           {{!--  <a href="example/{{this.id}}">{{this.description}}</a> --}}
+           
+            <button class="btn btn-danger float-right delete">ｘ</button>
+          </li>
+           <a href="example/{{this.id}}">{{this.author}}</a>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
