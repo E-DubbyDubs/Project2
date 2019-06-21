@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "/app/public/views/view.html"));
+  res.sendFile(path.join(__dirname, "./app/public/views/view.html"));
 });
 
 
@@ -23,7 +23,7 @@ app.get("/", function(req, res) {
 app.engine(
   "handlebars",
   exphbs({
-    defaultLayout: "main"
+    defaultLayout: "dashboard.html"
   })
 );
 app.set("view engine", "handlebars");
@@ -32,6 +32,7 @@ app.set("view engine", "handlebars");
 // Routes
 require("./app/routes/apiRoutes")(app);
 require("./app/routes/htmlRoutes")(app);
+ 
 
 var syncOptions = { force: false };
 
