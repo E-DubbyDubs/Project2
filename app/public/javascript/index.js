@@ -34,7 +34,6 @@ var API = {
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function () {
-  alert("refreshing");
   API.getExamples().then(function (data) {
     var $examples = data.map(function (example) {
       var $a = $("<a>")
@@ -78,7 +77,6 @@ var refreshExamples = function () {
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function (event) {
-  alert("submit button clicked");
   console.log("event: " + event);
   event.preventDefault();
 
@@ -89,10 +87,10 @@ var handleFormSubmit = function (event) {
     author: $exampleAuthor.val().trim()
   };
 
-  if (!(example.recipeName && example.author)) {
-    alert("You must enter a Recipe and Author!");
-    return;
-  }
+  // if (!(example.recipeName && example.author)) {
+  //   alert("You must enter a Recipe and Author!");
+  //   return;
+  // }
 
   API.saveExample(example).then(function () {
     refreshExamples();
@@ -165,7 +163,7 @@ $("#searchButtonOne").on("click", function () {
         var recipeDiv = $("<div>").width(150);
 
         var recipeImage = $("<img>");
-        var recipeImage = $("<img>").width(80);
+        var recipeImage = $("<img>").width(120);
         var recipeCaption = $("<div>");
         var recipeBtnDiv = $("<div>");
         var activityBtn = $("<div>").width(250);
@@ -217,7 +215,7 @@ $("#searchButtonOne").on("click", function () {
         recipeBtnDiv.append(activityBtn);
         recipeCaption.append(recipeBtnDiv);
         recipeImage.attr("src", results[i].recipe.image);
-        recipeDiv.addClass("thumbnail col-md-6 recipe");
+        recipeDiv.addClass("thumbnail col-md-12 recipe");
         recipeDiv.append(recipeImage);
         recipeDiv.append(recipeCaption);
         recipeDiv.append(recipeCaption);
