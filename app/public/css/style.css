@@ -2,39 +2,67 @@ body {
     background-color:rgb(247, 239, 236);  
 }
 
-#sub_home1 {
+/* #sub_home1 { */
     /* background-color:rgb(247, 239, 236, 0.7); */
-    border: #2A3852;
-    margin-left: 30px;
+    /* border: #2A3852;
+    margin-left: 30px; */
 }
 
-#sub_home2 {
-    /* background-color:rgb(247, 239, 236, 0.7); */
-    border: #2A3852;
-}
-
-#sub_home3 {
-    height:420px;
-    /* background-color:rgb(247, 239, 236, 0.7); */
-    border: #2A3852;
-    margin-top: 25px;
-    margin-left: 15px;
-}
-
-#sub_home4 {
-    width: 450px;
+/* #sub_home2 { */
     /* background-color:rgb(247, 239, 236, 0.7); */
     /* border: #2A3852; */
-    margin-top: 2px;
-    margin-left: 150px;
-    border-top-style: none;
 }
 
-#sub_home5 {
+/* #sub_home3 {
+    height:420px; */
+    /* background-color:rgb(247, 239, 236, 0.7); */
+    /* border: #2A3852; */
+    /* margin-top: 25px; */
+    /* margin-left: 15px; */
+}
+
+/* #sub_home4 {
+    width: 450px; */
+    /* background-color:rgb(247, 239, 236, 0.7); */
+    /* border: #2A3852; */
+    /* margin-top: 2px;
+    margin-left: 150px; */
+    /* border-top-style: none; */
+}
+
+/* #sub_home5 {
     width: 450px;
-    margin-top: 25px;
+    margin-top: 25px; */
     /* margin-left: 150px; */
-    
+}
+
+#searchRecipe {
+    background-color: rgba(255,255,255,0.7);
+    margin-bottom: 30px;
+    padding-bottom: 50px;
+}
+
+  #searchInput {
+    width: 400px;
+}
+
+  #result-col {
+    padding: 20px;
+    text-align: center;
+}
+
+  .recipeName {
+    margin-right: 5px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+  #results1 img {
+    /* width: 500px; */
+}
+
+.thumbnail {
+    padding: 10px;
 }
  
 .lead {
@@ -49,9 +77,11 @@ body {
 }
 
 .jumbotron {
-    background-color:  rgb(245, 242, 239);
+    background-color:  #837164;
+    color: white;
     text-align: center;
     padding-bottom: 10px;
+    font-family: 'Anton', sans-serif;
 }
 
 #login, #logout {
@@ -204,7 +234,7 @@ body {background-color:pink;}
  .wrapper {
      background-color: rgb(255, 255, 255, 0.7);
      padding: 20px;
-     margin-bottom: 30px;
+     margin-bottom: 60px;
  }
 
  .col {
@@ -213,4 +243,10 @@ body {background-color:pink;}
 
  #results1 {
      padding: 30px;
+ }
+
+ footer {
+     background-color: #837164; 
+     padding: 20px 0px;
+     text-align: center;
  }

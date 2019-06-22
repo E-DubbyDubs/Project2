@@ -8,14 +8,10 @@
         <a id="logout" href="/logout" class="btn btn-sm btn-outline-secondary" style="background-color:rgb(233, 210, 165);">Log Out</a>                                 
     </nav>
            
-    <div  class="jumbotron jumbotron-fluid">
+    <div  class="jumbotron jumbotron-fluid shadow">
           <div  class="container">
               <h1>PieSpace</h1>
-
-            
                 <p class="lead">Welcome! Search recipes by name or ingredients, or add your own to save for later!
-                  
-              
                 </p>
           </div>
     </div>
@@ -68,14 +64,14 @@
         </div>
         
         <div class="container">
-            <div class="row wrapper">
-              <div id="sub_home3" class="col-6 offset-2"  action="POST">
+            <div class="row wrapper" id="searchRecipe">
+              <div class="col-md-6"  action="POST">
         
                 <!-- Search for recipes -->
                 <h3>Search for recipes</h3>
-                <div class="row">
-                    <div class="input-group">
-                      <input type="text" id='seach_recipe' class="form-control" title="Enter a recipe to search." placeholder="Search  Recipes ">
+                <div class="row" style="margin-left:5px">
+                    <div class="input-group" id="searchInput">
+                      <input type="text" id='seach_recipe' class="form-control" title="Enter a recipe to search." placeholder="Search Recipes">
                       <span class="input-group-btn">
                           <button id="searchButtonOne" class="btn" style="background-color:rgb(233, 210, 165);" type="button" title=" ">Search</button>
                       </span>
@@ -87,7 +83,7 @@
                 <div class="block">
                   <div id = "result-col" class="row">
                       {{!-- <div class="col"> --}}
-                          <div id='results1' >
+                          <div id='results1' style="text-align:center">
                           </div>                         
                       {{!-- </div> --}}
                   </div>
@@ -95,33 +91,37 @@
               </div>
             
                     
-              <div  class="col-2"  action="POST">
+              <div  class="col-5"  action="POST">
                 <div class="row">
-                    <div class="col">
-                        <table id = "sub_home4" class="table table-striped-border">
-                            <thead>
-                                <div ID = "sub_home5" class="topFive col-md-12">Ingredients List</div>
-                            </thead>
-                            <tbody id='top5'>
-                                <th scope="col" class="align-middle"></th>
-                                
-                                <th scope="col" id='ingredient1' class="align-middle"> </th>                                      
-    {{!--               
-                                <th scope="col" class="align-middle"></th>
-                                <th scope="col" id='ingredient2' class="align-middle"> </th>            
-                                                              
-                                <th scope="col" class="align-middle"></th>
-                                <th scope="col" id='ingredient3' class="align-middle"> </th>                                                 
+                    {{!-- <div class="col"> --}}
+                        {{!-- <div id = "sub_home4" class="table table-striped-border"> --}}
                             
-                                <th scope="col" class="align-middle"></th>
-                                <th scope="col" id='ingredient4' class="align-middle"> </th>                                   
-                
-                                <th scope="col" class="align-middle"></th>
-                                <th scope="col" id='ingredient5' class="align-middle"> </th> --}}
-        
-                            </tbody>
-                        </table>
-                    </div>
+                            {{!-- <div ID = "sub_home5" class="topFive col-md-12"> --}}
+                            <div class="col-md-12">
+                                <h3>Ingredients List</h3>
+                            
+                                <ul id='top5'style="list-style-type:none;">
+                                    {{!-- <li scope="col" class="align-middle"></li> --}}
+                                    
+                                    <li scope="col" id='ingredient1' class="align-middle"> </li>                                      
+        {{!--               
+                                    <th scope="col" class="align-middle"></th>
+                                    <th scope="col" id='ingredient2' class="align-middle"> </th>            
+                                                                  
+                                    <th scope="col" class="align-middle"></th>
+                                    <th scope="col" id='ingredient3' class="align-middle"> </th>                                                 
+                                
+                                    <th scope="col" class="align-middle"></th>
+                                    <th scope="col" id='ingredient4' class="align-middle"> </th>                                   
+                    
+                                    <th scope="col" class="align-middle"></th>
+                                    <th scope="col" id='ingredient5' class="align-middle"> </th> --}}
+            
+                                </ul>
+                            </div>
+
+                        {{!-- </div> --}}
+                    {{!-- </div> --}}
                   </div>
               </div>
             </div>
