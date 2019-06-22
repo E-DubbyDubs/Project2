@@ -38,20 +38,8 @@ var refreshExamples = function () {
     var $examples = data.map(function (example) {
       var $a = $("<a>")
         .text(example.recipeName)
-        .text(example.author)
         .attr("href", "/example/" + example.id);
-      //add author
-      // var $a = $("<div>")
-      //   .text(example.$exampleAuthor)
-      //   .attr("href", "/example/" + example.id);
-      // add ingredient to the DOM
-      var $a = $("<a>")
-        .text(example.ingredientList)
-        .attr("href", "/example/" + example.id);
-      //add the recipe steps
-      var $a = $("<a>")
-        .text(example.description)
-        .attr("href", "/example/" + example.id);
+      
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
@@ -160,13 +148,13 @@ $("#searchButtonOne").on("click", function () {
 
         var calories = Math.floor(intCalories);
         var ingredient = results[i].recipe.ingredientLines;
-        var recipeDiv = $("<div>").width(150);
+        var recipeDiv = $("<div>");
 
         var recipeImage = $("<img>");
-        var recipeImage = $("<img>").width(120);
+        var recipeImage = $("<img>");
         var recipeCaption = $("<div>");
         var recipeBtnDiv = $("<div>");
-        var activityBtn = $("<div>").width(250);
+        var activityBtn = $("<div>");
         activityBtn.addClass("text-center");
         var caloriesP = $("<p>");
         recipeCaption.addClass("caption");
@@ -215,13 +203,13 @@ $("#searchButtonOne").on("click", function () {
         recipeBtnDiv.append(activityBtn);
         recipeCaption.append(recipeBtnDiv);
         recipeImage.attr("src", results[i].recipe.image);
-        recipeDiv.addClass("thumbnail col-md-12 recipe");
+        recipeDiv.addClass("thumbnail recipe");
         recipeDiv.append(recipeImage);
         recipeDiv.append(recipeCaption);
         recipeDiv.append(recipeCaption);
 
         $("#results1").append(recipeDiv);
-        $("#ingredient1").prepend(activityBtn);
+        $("#ingredient1").append(activityBtn);
 
         //console.log(ingredient);
       }
