@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Yummy recipes</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Style -->
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/jquery-ui.css"> -->
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+            <a href="/logout" class="btn btn-sm btn-outline-secondary">Log Out</a>
+        </form>
+    </nav>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <nav style='height:50px'>
+                <a id="logout" class="nav-item nav-link">Log Out</a>
+                <a id="login" class="nav-item nav-link" href="login-register.html">Login/Register</a>
+            </nav>
+            <img src="https://cdn.vox-cdn.com/uploads/chorus_image/image/51532085/Pie_splet_on_pie.0.0.jpg" width=950px
+                height="350px" alt="Logo">
+            <p class="lead">Yummy recipes makes it easy to find great recipes.
+                Search by name or ingredients. Join to save your favorites for later.!
+            </p>
+
+
+        </div>
+    </div>
+
+    <!--Make you own recipe -->
+
+
+    <div id="home">
+        <div id="sub_home" class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div id="sub_home1" class="col-4 offset-2">
+
+                            <h3>Make Your Own Recipe</h3>
+                            <form class="clearfix mb-4" action="POST">
+                                <div class="input-group">
+                                    <label for="recipe-name"> Recipe Name </label>
+                                    <input type="text" id="recipe" class="form-control"
+                                        aria-describedby="example-ingredient" placeholder="Enter a recipe">
+
+                                </div>
+                                <div class="input-group">
+                                    <label for="example-ingredient"> Ingredient </label>
+                                    <input type="text" id="example-ingredient" class="form-control"
+                                        aria-describedby="example-ingredient" placeholder="Enter an ingredient">
+                                    <span class="input-group-btn">
+                                        <button id="add" class="btn btn-primary float-right"
+                                            style="background-color:rgb(233, 210, 165);" type="button"
+                                            title="Click here to add">Add</button>
+                                    </span>
+                                </div>
+                                <div class="input-group">
+                                    <label for="example-recipe">Steps</label>
+                                    <textarea class="form-control" id="example-recipe" aria-describedby="example-recipe"
+                                        placeholder="Enter a step to make the recipe"></textarea>
+                                    <span class="input-group-btn">
+                                        <button id="add" class="btn btn-primary float-right"
+                                            style="background-color:rgb(233, 210, 165);" type="button"
+                                            title="Click here to add">Add</button>
+                                    </span>
+                                </div>
+                                <div class="input-group">
+                                    <label for="example-author">Author</label>
+                                    <textarea class="form-control" id="example-author" aria-describedby="example-author"
+                                        placeholder="Enter recipe author"></textarea>
+                                </div>
+                            </form>
+                            <span class="input-group-btn">
+                                <button id="submit" class="btn btn-primary float-right"
+                                    style="background-color:rgb(233, 210, 165);" type="button"
+                                    title="Click here to submit">Submit</button>
+                            </span>
+                        </div>
+
+                        <div id="sub_home2" class="col-4 offset-2">
+                            <h3>Your shopping List:</h3>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="container">
+                        <div class="row">
+                            <div id="sub_home3" class="col-6 offset-2" action="POST">
+
+                                <!-- Search for recipes -->
+                                <h3>Search for recipes</h3>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group">
+                                            <input type="text" id='seach_recipe' class="form-control"
+                                                title="Enter a recipe to search."
+                                                placeholder="Search Your Own Recipes ">
+                                            <span class="input-group-btn">
+                                                <button id="searchButton" class="btn"
+                                                    style="background-color:rgb(233, 210, 165);" type="button"
+                                                    title=" ">Search</button>
+                                            </span>
+                                            <div class="input-group">
+
+                                                <input type="text" id='search_others' class="form-control"
+                                                    title="Enter a recipe to search."
+                                                    placeholder="Search Other Recipes ">
+                                                <span class="input-group-btn">
+                                                    <button id="searchButton" class="btn"
+                                                        style="background-color:rgb(233, 210, 165);" type="button"
+                                                        title="Click here to search">Search</button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- recipes search Results-->
+                                <div class="container">
+                                    <div id="result-col" class="row">
+                                        <div class="col">
+                                            <div id='results1'>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="col-2 offset-2" action="POST">
+
+                                <div class="row">
+                                    <div class="col">
+                                        <table id="sub_home4" class="table table-striped-border">
+
+                                            <thead>
+                                                <tr>
+                                                    <div ID="sub_home5" class="topFive" class="col-md-12">Ingredients
+                                                        List</div>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody id='top5'>
+
+                                                <th scope="col" class="align-middle"></th>
+
+                                                <th scope="col" id='ingredient1' class="align-middle"> </th>
+
+                                                <th scope="col" class="align-middle"></th>
+                                                <th scope="col" id='ingredient2' class="align-middle"> </th>
+
+                                                <th scope="col" class="align-middle"></th>
+                                                <th scope="col" id='ingredient3' class="align-middle"> </th>
+
+                                                <th scope="col" class="align-middle"></th>
+                                                <th scope="col" id='ingredient4' class="align-middle"> </th>
+
+                                                <th scope="col" class="align-middle"></th>
+                                                <th scope="col" id='ingredient5' class="align-middle"> </th>
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div id="ingredient-col" class="row">
+                        <div class="col">
+                            <div id='ingredient1'>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="fav" class="container" action="POST">
+                    <!-- Favorite Recipes -->
+
+                    <thead>
+                        <tr>
+                            <div class="topFive" class="col-md-12"><span id="heartStyle"
+                                    class="glyphicon glyphicon-heart"></span>My Favorites Recipes </div>
+                        </tr>
+                    </thead>
+
+                    <tbody id='favorites'>
+                    </tbody>
+
+
+                </div>
+
+
+                <!--Code for jQueryUI tool tips-->
+                <script src="https://code.jquery.com/jquery.js"></script>
+                <!-- <script src="javascript/jquery-ui.js"></script> -->
+
+                <!-- Code to the JavaScript File -->
+                <script src="../javascript/recipe.js"></script>
+
+</body>
+
+</html>

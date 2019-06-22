@@ -1,0 +1,39 @@
+     {{!-- <div  class="jumbotron jumbotron-fluid">
+        <div  class="container">
+                <nav style='height:5px'>
+                    <a id="logout" href="/logout" class="btn btn-sm btn-outline-secondary" style="background-color:rgb(233, 210, 165);">Log Out</a>                                 
+                </nav>
+            <img src="https://cdn.vox-cdn.com/uploads/chorus_image/image/51532085/Pie_splet_on_pie.0.0.jpg" width=950px height="350px" alt="Logo">
+              <p class="lead">Yummy recipes makes it easy to find great recipes.
+                    Search by name or ingredients. Join to save your favorites for later.!
+              </p>
+
+          </div>
+    </div> --}}
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h3 class="card-title">Recipe Details</h3>
+          <p>
+            <strong>ID</strong>: {{example.id}}</p>
+          <p>
+          <p>
+            <strong>Recipe Name</strong>: {{example.recipeName}}</p>
+          <p>
+            <strong>Ingredient List:</strong> {{example.ingredientList}}</p>
+             <p>
+            <strong>Description:</strong> {{example.description}}</p>
+            <p>
+            <strong>Author:</strong> {{example.author}}</p>
+            <a href="/dashboard">← Back To Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5d0a99ae99fa31001200319f&product=sticky-share-buttons' async='async'></script>

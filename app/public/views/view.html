@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/view.css">
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+    <title>Welcome to Pie Space!</title>
+</head>
+
+<body style="background:url(https://cdn.vox-cdn.com/uploads/chorus_image/image/51532085/Pie_splet_on_pie.0.0.jpg); background-repeat: no-repeat; background-attachment: fixed;background-size: cover;">
+
+    <div class="jumbotron jumbotron-fluid shadow">
+            
+            <h1 id="main-title">~ Welcome to Pie Space ~</h1>
+            <h5>Check out popular recipes, or store your own</h5>
+            <h6>Please Sign-up or Sign-in below to see for yourself!</h6>
+
+    </div>
+    <div class="container">
+        <div class="wrapper shadow">
+            <h1 class="text">Sign-In</h1>
+
+            <!-- <form id="signin" name="signin" method="post" action="/signin">
+                <label for="email">Email Address</label>
+                <input class="text" name="email" type="text" />
+                <label for="password">Password</label>
+                <input name="password" type="password" />
+                <input class="btn" type="submit" value="Sign In" />
+            </form> -->
+
+            <form id="signin" name="signin" method="post" action="/signin">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1"
+                        placeholder="Password">
+                </div>
+                <button type="submit" class="btn shadow">Sign In</button>
+            </form>
+        </div>    
+
+        <br><br>
+
+        <div class="wrapper shadow">
+            <h1 class="text">Sign Up</h1>
+            <form id="signup" name="signup" method="post" action="/signup">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">First Name</label>
+                    <input name="firstname" type="text" class="form-control" id="exampleInputPassword1" placeholder="John">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Last Name</label>
+                    <input name="lastname" type="text" class="form-control" id="exampleInputPassword1" placeholder="Smith">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email Address</label>
+                    <input name="email" type="email" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input name="password" type="password" class="form-control" id="exampleInputPassword1"
+                        placeholder="Password">
+                </div>
+                <button type="submit" class="btn shadow">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

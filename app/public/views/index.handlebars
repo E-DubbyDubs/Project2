@@ -1,0 +1,152 @@
+
+<body>
+     
+      {{!--   <form class="form-inline">
+                <a href="/logout" class="btn btn-sm btn-outline-secondary">Log Out</a>
+        </form> --}}
+    <nav style='height:5px'>
+        <a id="logout" href="/logout" class="btn btn-sm btn-outline-secondary" style="background-color:rgb(233, 210, 165);">Log Out</a>                                 
+    </nav>
+           
+    <div  class="jumbotron jumbotron-fluid shadow">
+          <div  class="container">
+              <h1>PieSpace</h1>
+                <p class="lead">Welcome! Search recipes by name or ingredients, or add your own to save for later!
+                </p>
+          </div>
+    </div>
+    <div id="home">
+        <div id = "sub_home" class="container"> 
+          <div class="row wrapper">
+            <div  class="col">
+                <div class="row">
+                  <div id = "sub_home1" class="col-4 offset-2">        
+                    
+                    <h3>Make Your Own Recipe</h3>
+                    <form  class="clearfix mb-4" action="POST">
+                        <div class="form-group">
+                        <label for="example-text">Recipe Name</label>
+                        <input type="text" id="example-recipe" class="form-control" aria-describedby="example-text" placeholder="Enter a recipe name">
+                      </div>
+                        
+                      <div class="form-group">
+                        <label for="example-text">Ingredient List</label>
+                        <input type="text" id="example-ingredient" class="form-control" aria-describedby="example-text" placeholder="Enter the ingredient list for your recipe">
+                      <div class="form-group">
+                        <label for="example-description">Instructions</label>
+                        <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter the instructions"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="example-description">Author</label>
+                        <textarea class="form-control" id="example-author" aria-describedby="example-description" placeholder="Enter the recipe author"></textarea>
+                      </div>
+                      <button id="submit" class="btn float-right" style="background-color:rgb(233, 210, 165);" type="button" title="Click here to submit">Submit</button>
+                    </form>
+                      
+                  </div>
+                    
+                </div>
+    
+                <div id = "sub_home2" class="col-4 offset-2">
+                  <h3>My Recipes</h3>
+                      <ul id="example-list" class="list-group">
+                        {{#each examples}}
+                        <li data-id="{{this.id}}" class="list-group-item">        
+                            <a href="example/{{this.id}}">{{this.recipeName}}</a               
+                        {{!--  <a href="example/{{this.id}}">{{this.description}}</a> --}}           
+                          <button class="btn btn-danger float-right delete">ｘ</button>
+                        </li>
+                        {{/each}}
+                      </ul>
+                </div>
+              </div>
+          </div>
+        </div>
+        
+        <div class="container">
+            <div class="row wrapper" id="searchRecipe">
+              <div class="col-md-6"  action="POST">
+        
+                <!-- Search for recipes -->
+                <h3>Search for recipes</h3>
+                <div class="row" style="margin-left:5px">
+                    <div class="input-group" id="searchInput">
+                      <input type="text" id='seach_recipe' class="form-control" title="Enter a recipe to search." placeholder="Search Recipes">
+                      <span class="input-group-btn">
+                          <button id="searchButtonOne" class="btn" style="background-color:rgb(233, 210, 165);" type="button" title=" ">Search</button>
+                      </span>
+                    
+                    </div>
+                </div>
+                
+                <!-- recipes search Results--> 
+                <div class="block">
+                  <div id = "result-col" class="row">
+                      {{!-- <div class="col"> --}}
+                          <div id='results1' style="text-align:center">
+                          </div>                         
+                      {{!-- </div> --}}
+                  </div>
+                </div> 
+              </div>
+            
+                    
+              <div  class="col-5"  action="POST">
+                <div class="row">
+                    {{!-- <div class="col"> --}}
+                        {{!-- <div id = "sub_home4" class="table table-striped-border"> --}}
+                            
+                            {{!-- <div ID = "sub_home5" class="topFive col-md-12"> --}}
+                            <div class="col-md-12">
+                                <h3>Ingredients List</h3>
+                            
+                                <ul id='top5'style="list-style-type:none;">
+                                    {{!-- <li scope="col" class="align-middle"></li> --}}
+                                    
+                                    <li scope="col" id='ingredient1' class="align-middle"> </li>                                      
+        {{!--               
+                                    <th scope="col" class="align-middle"></th>
+                                    <th scope="col" id='ingredient2' class="align-middle"> </th>            
+                                                                  
+                                    <th scope="col" class="align-middle"></th>
+                                    <th scope="col" id='ingredient3' class="align-middle"> </th>                                                 
+                                
+                                    <th scope="col" class="align-middle"></th>
+                                    <th scope="col" id='ingredient4' class="align-middle"> </th>                                   
+                    
+                                    <th scope="col" class="align-middle"></th>
+                                    <th scope="col" id='ingredient5' class="align-middle"> </th> --}}
+            
+                                </ul>
+                            </div>
+
+                        {{!-- </div> --}}
+                    {{!-- </div> --}}
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+              <div id = "ingredient-col" class="row">
+                  <div class="col">
+                      <div id='ingredient1' >
+                            
+                      </div>
+                      
+                  </div>
+              </div>
+          </div>
+        
+    </div>
+
+
+    <!--Code for jQueryUI tool tips-->
+        <script src="https://code.jquery.com/jquery.js"></script>
+        {{!-- <script src="javascript/jquery-ui.js"></script> --}}
+        
+          <!-- Code to the JavaScript File -->
+        {{!-- <script src="js/index.js"></script> --}}
+        <script src="../javascript/index.js"></script>
+
+</body>
