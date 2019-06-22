@@ -12,9 +12,10 @@
       <div  class="container">
           <h1>PieSpace</h1>
 
-          <img src="https://cdn.vox-cdn.com/uploads/chorus_image/image/51532085/Pie_splet_on_pie.0.0.jpg" width=950px height="350px" alt="Logo">
-            <p class="lead">Yummy recipes makes it easy to find great recipes.
-                  Search by name or ingredients. Join to save your favorites for later.!
+        
+            <p class="lead">Welcome! Search recipes by name or ingredients, or add your own to save for later!
+              
+          
             </p>
       </div>
 </div>
@@ -43,7 +44,7 @@
             <label for="example-description">Author</label>
             <textarea class="form-control" id="example-author" aria-describedby="example-description" placeholder="Enter the recipe author"></textarea>
           </div>
-          <button id="submit" class="btn btn-primary float-right" style="background-color:rgb(233, 210, 165);" type="button" title="Click here to submit">Submit</button>
+          <button id="submit" class="btn float-right" style="background-color:rgb(233, 210, 165);" type="button" title="Click here to submit">Submit</button>
         </form>
            </div>
              
@@ -87,9 +88,10 @@
                   
                   </div>
               </div>
-             <div class="container">   
-                <!-- recipes search Results-->
-              <div class="container">
+             {{!-- <div class="container">   
+                <!-- recipes search Results--> --}}
+              <div class="block">
+                
                       <div id = "result-col" class="row">
                           <div class="col">
                               <div id='results1' >
@@ -97,11 +99,12 @@
                           </div>
                       </div>
               </div> 
-              </div>     
+              {{!-- </div>      --}}
+
     </div>
           
 </div>
-   <div  class="col-2 offset-2"  action="POST">
+   <div  class="col-2"  action="POST">
        
         <div class="row">
                 <div class="col">

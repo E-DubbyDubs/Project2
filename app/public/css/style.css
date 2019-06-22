@@ -3,19 +3,19 @@ body {
 }
 
 #sub_home1 {
-    background-color:rgb(252, 250, 250);
+    background-color:rgb(247, 239, 236, 0.7);
     border: #2A3852;
     margin-left: 30px;
 }
 
 #sub_home2 {
-    background-color:rgb(247, 239, 236);
+    background-color:rgb(247, 239, 236, 0.7);
     border: #2A3852;
 }
 
 #sub_home3 {
     height:420px;
-    background-color:rgb(247, 239, 236);
+    background-color:rgb(247, 239, 236, 0.7);
     border: #2A3852;
     margin-top: 25px;
     margin-left: 15px;
@@ -23,7 +23,7 @@ body {
 
 #sub_home4 {
     width: 450px;
-    background-color:rgb(247, 239, 236);
+    background-color:rgb(247, 239, 236, 0.7);
     border: #2A3852;
     margin-top: 2px;
     margin-left: 150px;
@@ -32,7 +32,8 @@ body {
 #sub_home5 {
     width: 450px;
     margin-top: 25px;
-    margin-left: 150px;
+    /* margin-left: 150px; */
+    
 }
  
 .lead {
@@ -89,6 +90,7 @@ body {
     font-size: 16px;
     font-family: "avenir";
     font-weight: 500;
+    align-content: left;
 }
 
 .glyphicon-play-circle, .glyphicon-pause, .glyphicon-play, .glyphicon-repeat {
@@ -185,3 +187,15 @@ h3 {
     margin-right: 20px;
     font-size: 20px;
 }
+
+body {background-color:pink;}
+
+.block {
+    margin: 10px;
+    display: block;
+
+ }
+
+ .btn {
+
+ }
