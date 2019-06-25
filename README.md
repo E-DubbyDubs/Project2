@@ -20,9 +20,9 @@ This app also uses both GET and POST routes for retrieving and adding new data, 
 ## Link
 - [Pie Space!](https://sheltered-earth-11529.herokuapp.com/)
 
-# Log in with a pre-registered account using:
-E-mail: Guest@mail.com
-Password: Guest
+### Log in with a pre-registered account using:
+-[E-mail: Guest@mail.com]
+-[Password: Guest]
 
  ## Technologies Used
 
@@ -44,6 +44,6 @@ Password: Guest
   ### Deployment
   - Heroku
 
-![](/app/public/images/signin.png?raw=true)
-![](/app/public/images/main.png?raw=true)
-![](/app/public/images/api.png?raw=true)
+![](/public/images/signin.png?raw=true)
+![](/public/images/main.png?raw=true)
+![](/public/images/api.png?raw=true)
