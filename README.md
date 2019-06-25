@@ -44,6 +44,6 @@ This app also uses both GET and POST routes for retrieving and adding new data, 
   ### Deployment
   - Heroku
 
-![](/public/images/signin.png?raw=true)
-![](/public/images/main.png?raw=true)
-![](/public/images/api.png?raw=true)
+![](/app/public/images/signin.png?raw=true)
+![](/app/public/images/main.png?raw=true)
+![](/app/public/images/api.png?raw=true)
