@@ -44,6 +44,11 @@ This app also uses both GET and POST routes for retrieving and adding new data, 
   ### Deployment
   - Heroku
 
+### Log-in Page:
 ![](/app/public/images/signin.png?raw=true)
+
+### Make, Save, and Search Recipes:
 ![](/app/public/images/main.png?raw=true)
+
+### Search Results Using Edamam API:
 ![](/app/public/images/api.png?raw=true)
